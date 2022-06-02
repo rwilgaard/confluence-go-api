@@ -56,7 +56,6 @@ pipeline {
                 dockerfile {
                     filename 'dockerfile.nancy'
                     dir './'
-                    label 'my-nancy'
                 }
             }
             steps {
