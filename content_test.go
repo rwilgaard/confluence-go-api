@@ -185,7 +185,7 @@ func Test_GetPageID(t *testing.T) {
 func Test_UppdateAttachment(t *testing.T) {
 	prepareTest(t, []int{TestGetPageID, TestUppdate1, TestUppdate2})
 
-	err2 := testClient.UppdateAttachment("ds", "Welcome to Confluence", "C:/Temp/Template.xlsx")
+	err2 := testClient.UppdateAttachment("ds", "Welcome to Confluence", "./mocks/Template.xlsx")
 	if err2 == nil {
 	} else {
 		t.Error("Received nil response.")
@@ -225,7 +225,7 @@ func TesLocalhost(t *testing.T) {
 	assert.Nil(t, err2)
 	assert.Equal(t, "98319", res.Results[0].ID)
 
-	err = a.UppdateAttachment("ds", "Welcome to Confluence", "C:/Temp/Template.xlsx")
+	err = a.UppdateAttachment("ds", "Welcome to Confluence", "./mocks/Template.xlsx")
 	assert.Nil(t, err)
 
 	err = a.AddPage("Test Added page 4", "ds", "./mocks/grouppage.html", true, true, res.Results[0].ID)
