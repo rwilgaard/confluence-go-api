@@ -51,6 +51,12 @@ pipeline {
                 }
             }
         }
+        stage('Vulnerabilities') {
+            steps {
+                echo 'Vulnerabilities'
+                sh 'go list -json -m all | docker run --rm -i sonatypecommunity/nancy:latest sleuth'
+            }
+        }
         stage('Artifacts') {
             steps { 
                 script {
