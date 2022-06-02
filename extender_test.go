@@ -58,7 +58,7 @@ func Test_TestExtenderSpacePermissionTypes(t *testing.T) {
 	}
 }
 
-func Test_TestExtenderSpaceAnyUserPermission(t *testing.T) {
+func Test_ExtenderSpaceAnyUserPermission(t *testing.T) {
 	prepareTest(t, []int{TestExtenderSpaceAnyUserPermission})
 
 	userPermissionsForSpace, err2 := testClient.GetUserPermissionsForSpace("~admin", "admin")
@@ -76,7 +76,7 @@ func Test_TestExtenderSpaceAnyUserPermission(t *testing.T) {
 	}
 }
 
-func Test_TestExtenderGetGroups(t *testing.T) {
+func Test_ExtenderGetGroups(t *testing.T) {
 	prepareTest(t, []int{TestExtenderGetGroups})
 
 	getGroups, err2 := testClient.GetGroups(nil)
@@ -94,7 +94,7 @@ func Test_TestExtenderGetGroups(t *testing.T) {
 	}
 }
 
-func Test_TestExtenderGetUsers(t *testing.T) {
+func Test_ExtenderGetUsers(t *testing.T) {
 	prepareTest(t, []int{TestExtenderGetUsers})
 
 	getUsers, err2 := testClient.GetUsers("confluence-users", nil)
@@ -105,6 +105,26 @@ func Test_TestExtenderGetUsers(t *testing.T) {
 		} else {
 			if len(getUsers.Users) == 0 {
 				t.Errorf("Expected Success, received: %v Users \n", len(getUsers.Users))
+			}
+		}
+	} else {
+		t.Error("Received nil response.")
+	}
+}
+
+func Test_AllGroupsWithAnyPermission(t *testing.T) {
+	prepareTest(t, []int{TestAllGroupsWithAnyPermission})
+	opt := PaginationOptions{}
+	opt.StartAt = 0
+	opt.MaxResults = 10
+	getGroups, err2 := testClient.GetAllGroupsWithAnyPermission("ds", &opt)
+	//	defer CleanupH(resp)
+	if err2 == nil {
+		if getGroups == nil {
+			t.Error("Expected Groups. Groups is nil")
+		} else {
+			if len(getGroups.Groups) == 0 {
+				t.Errorf("Expected Success, received: %v Groups \n", len(getGroups.Groups))
 			}
 		}
 	} else {

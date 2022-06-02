@@ -35,6 +35,7 @@ const (
 	TestGetPageID
 	TestUppdate1
 	TestUppdate2
+	TestAllGroupsWithAnyPermission
 )
 
 var ConfluenceTest = []ConfluenceTestType{
@@ -116,6 +117,14 @@ var ConfluenceTest = []ConfluenceTestType{
 		Method:       "POST",
 		Type:         "",
 		TypeFile:     "", UpdateJson: false,
+	},
+	{
+		MockEndpoint: "/rest/extender/1.0/permission/space/ds/allGroupsWithAnyPermission",
+		APIEndpoint:  "/rest/extender/1.0/permission/space/ds/allGroupsWithAnyPermission",
+		File:         "mocks/get-allgroupsanyperm.json",
+		Method:       "GET",
+		Type:         "GetAllGroupsWithAnyPermissionType",
+		TypeFile:     "get-usersperm-dtos.go", UpdateJson: true,
 	},
 }
 

@@ -169,13 +169,6 @@ func (a *API) GetGroups(options *GetGroupMembersOptions) (*GroupsType, error) {
 	return &groups, nil
 }
 
-type GetAllGroupsWithAnyPermissionType struct {
-	Total      int      `json:"total"`
-	MaxResults int      `json:"maxResults"`
-	Groups     []string `json:"groups"`
-	StartAt    int      `json:"startAt"`
-}
-
 func (a *API) GetAllGroupsWithAnyPermission(spacekey string, options *PaginationOptions) (*GetAllGroupsWithAnyPermissionType, error) {
 
 	u := a.endPoint.String() + fmt.Sprintf("/rest/extender/1.0/permission/space/%s/allGroupsWithAnyPermission", spacekey)
