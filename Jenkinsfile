@@ -52,9 +52,12 @@ pipeline {
             }
         }
         stage('Vulnerabilities') {
+            agent {
+                docker { image 'sonatypecommunity/nancy:latest' }
+            }
             steps {
                 echo 'Vulnerabilities'
-                sh 'go list -json -m all | docker run --rm -i sonatypecommunity/nancy:latest sleuth'
+                sh 'go list -json -m all | nancy sleuth'
             }
         }
         stage('Artifacts') {

@@ -36,6 +36,7 @@ const (
 	TestUppdate1
 	TestUppdate2
 	TestAllGroupsWithAnyPermission
+	TestGetGroupPermissionsForSpace
 )
 
 var ConfluenceTest = []ConfluenceTestType{
@@ -75,8 +76,10 @@ var ConfluenceTest = []ConfluenceTestType{
 	{
 		MockEndpoint: "/rest/extender/1.0/permission/user/admin/getPermissionsForSpace/space/~admin",
 		APIEndpoint:  "/rest/extender/1.0/permission/user/admin/getPermissionsForSpace/space/~admin",
-		File:         "mocks/get-admin-permissions.json", Method: "GET", Type: "GetPermissionsForSpaceType",
-		TypeFile: "get-admin-permissions-dtos.go", UpdateJson: true,
+		File:         "mocks/get-admin-permissions.json",
+		Method:       "GET",
+		Type:         "GetPermissionsForSpaceType",
+		TypeFile:     "get-admin-permissions-dtos.go", UpdateJson: true,
 	},
 	{
 		MockEndpoint: "/rest/extender/1.0/group/getGroups",
@@ -124,7 +127,17 @@ var ConfluenceTest = []ConfluenceTestType{
 		File:         "mocks/get-allgroupsanyperm.json",
 		Method:       "GET",
 		Type:         "GetAllGroupsWithAnyPermissionType",
-		TypeFile:     "get-usersperm-dtos.go", UpdateJson: true,
+		TypeFile:     "get-usersperm-dtos.go",
+		UpdateJson:   true,
+	},
+	{
+		MockEndpoint: "/rest/extender/1.0/permission/group/confluence-users/getPermissionsForSpace/space/ds",
+		APIEndpoint:  "/rest/extender/1.0/permission/group/confluence-users/getPermissionsForSpace/space/ds",
+		File:         "mocks/get-grouppermspace.json",
+		Method:       "GET",
+		Type:         "",
+		TypeFile:     "",
+		UpdateJson:   true,
 	},
 }
 

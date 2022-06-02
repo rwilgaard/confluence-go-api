@@ -131,3 +131,23 @@ func Test_AllGroupsWithAnyPermission(t *testing.T) {
 		t.Error("Received nil response.")
 	}
 }
+
+func Test_GetGroupPermissionsForSpace(t *testing.T) {
+	prepareTest(t, []int{TestGetGroupPermissionsForSpace})
+	opt := PaginationOptions{}
+	opt.StartAt = 0
+	opt.MaxResults = 10
+	getPermissions, err2 := testClient.GetGroupPermissionsForSpace("ds", "confluence-users")
+	//	defer CleanupH(resp)
+	if err2 == nil {
+		if getPermissions == nil {
+			t.Error("Expected Permissions. Permissions is nil")
+		} else {
+			if len(getPermissions.Permissions) == 0 {
+				t.Errorf("Expected Success, received: %v Permissions \n", len(getPermissions.Permissions))
+			}
+		}
+	} else {
+		t.Error("Received nil response.")
+	}
+}
