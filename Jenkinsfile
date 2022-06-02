@@ -53,7 +53,11 @@ pipeline {
         }
         stage('Vulnerabilities') {
             agent {
-                docker { image 'sonatypecommunity/nancy:latest' }
+                dockerfile {
+                    filename 'dockerfile.nancy'
+                    dir './'
+                    label 'my-nancy'
+                }
             }
             steps {
                 echo 'Vulnerabilities'
