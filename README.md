@@ -1,4 +1,10 @@
 # confluence-go-api
+Remark: This is a fork from virtomize  - not yet merged 
+
+Main features:
+- Using a properties file to make automation easier
+- The [Extender for Confluence](https://it-lab-site.atlassian.net/wiki/spaces/RAEC/overview?homepageId=89852795) plugin, used for user, group and permissions
+
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VBXHBYFU44T5W&source=url)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-green.svg)](https://godoc.org/github.com/virtomize/confluence-go-api)

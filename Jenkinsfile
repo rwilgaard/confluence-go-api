@@ -53,10 +53,7 @@ pipeline {
         }
         stage('Vulnerabilities') {
             agent {
-                dockerfile {
-                    filename 'dockerfile.nancy'
-                    dir './'
-                }
+                docker { image 'yocreo/nancy:latest' }
             }
             steps {
                 echo 'Vulnerabilities'
