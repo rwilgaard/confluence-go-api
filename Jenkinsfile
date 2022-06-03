@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'golang:1.18-stretch' }
+        docker { image 'yocreo/go-docker' }
     }
     environment {
         GO114MODULE = 'on'
