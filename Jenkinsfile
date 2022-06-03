@@ -15,14 +15,6 @@ pipeline {
         stage('Pre Test') {
             steps {
                 echo 'Installing dependencies'
-                sh 'env'
-                sh 'pwd'             
-                sh 'go version'
-                sh 'go install honnef.co/go/tools/cmd/staticcheck@latest'
-                sh 'go install github.com/jstemmer/go-junit-report@latest'
-                sh 'go install github.com/axw/gocov/gocov@latest'
-                sh 'go install github.com/AlekSi/gocov-xml@latest'
-                sh 'go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest'
             }
         }
         
@@ -54,6 +46,12 @@ pipeline {
         stage('Vulnerabilities') {
             steps {
                 echo 'Vulnerabilities'
+                sh 'env'
+                sh 'pwd'             
+                sh 'go version'
+                sh 'nancy -V'
+                sh 'git --version'
+                sh '/usr/local/bin/nancy -V'
                 sh 'go list -json -m all | nancy sleuth'
             }
         }
