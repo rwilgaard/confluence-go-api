@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'yocreo/go-docker' }
+        docker { image 'yocreo/go-docker:latest' }
     }
     environment {
         GO114MODULE = 'on'
@@ -54,7 +54,7 @@ pipeline {
         stage('Vulnerabilities') {
             steps {
                 echo 'Vulnerabilities'
-                sh 'go list -json -m all | docker run --rm -i yocreo/nancy nancy sleuth'
+                sh 'go list -json -m all | nancy sleuth'
             }
         }
         stage('Artifacts') {
