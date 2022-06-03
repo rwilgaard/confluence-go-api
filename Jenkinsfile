@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'yocreo/go-docker:v0.0.6' }
+        docker { image 'yocreo/go-docker:latest' }
     }
     environment {
         GO114MODULE = 'on'
@@ -12,11 +12,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10')) 
     }    
     stages {        
-        stage('Pre Test') {
-            steps {
-                echo 'Installing dependencies'
-            }
-        }
         
         stage('Build') {
             steps {
@@ -60,11 +55,23 @@ pipeline {
                 script {
                     if (fileExists('report.xml')) {
                         archiveArtifacts artifacts: 'report.xml', fingerprint: true
-                        junit 'report.xml'
+                        try {
+                            junit 'report.xml'
+                        } catch (err) {
+                            echo err.getMessage()
+                            echo "Error detected, but we will continue."
+                            echo "No lint errors found is not an error."
+                        }
                     }
                     if (fileExists('coverage.xml')) {
-                        archiveArtifacts artifacts: 'coverage.xml', fingerprint: true
-                        cobertura coberturaReportFile: 'coverage.xml'
+                        try {
+                            archiveArtifacts artifacts: 'coverage.xml', fingerprint: true
+                            cobertura coberturaReportFile: 'coverage.xml'
+                        } catch (err) {
+                            echo err.getMessage()
+                            echo "Error detected, but we will continue."
+                            echo "No lint errors found is not an error."
+                        }
                     }
                     if (fileExists('golangci-lint.xml')) {
                         archiveArtifacts artifacts: 'golangci-lint.xml'            
