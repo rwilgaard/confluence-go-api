@@ -52,12 +52,9 @@ pipeline {
             }
         }
         stage('Vulnerabilities') {
-            agent {
-                docker { image 'yocreo/nancy:latest' }
-            }
             steps {
                 echo 'Vulnerabilities'
-                sh 'go list -json -m all | nancy sleuth'
+                sh 'go list -json -m all | docker run --rm -i yocreo/nancy nancy sleuth'
             }
         }
         stage('Artifacts') {
