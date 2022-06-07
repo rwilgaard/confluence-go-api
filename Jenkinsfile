@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'yocreo/go-docker:latest' }
+        docker { image 'yocreo/go-docker:v0.0.6' }
     }
     environment {
         GO114MODULE = 'on'
