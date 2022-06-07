@@ -39,6 +39,11 @@ const (
 	TestGetGroupPermissionsForSpace
 )
 
+const (
+	CONFLUENCE_SERVER     = "http://192.168.50.131:8090"
+	WELCOME_TO_CONFLUENCE = "98319"
+)
+
 var ConfluenceTest = []ConfluenceTestType{
 	{
 		MockEndpoint: "/rest/api/space",
@@ -114,8 +119,8 @@ var ConfluenceTest = []ConfluenceTestType{
 		TypeFile:     "", UpdateJson: true,
 	},
 	{
-		MockEndpoint: "/rest/api/content/98319/child/attachment/98379/data",
-		APIEndpoint:  "/rest/api/content/98319/child/attachment/98379/data",
+		MockEndpoint: "/rest/api/content/98319/child/attachment/950277/data",
+		APIEndpoint:  "/rest/api/content/98319/child/attachment/950277/data",
 		File:         "mocks/put-attachment.json",
 		Method:       "POST",
 		Type:         "",
@@ -143,7 +148,8 @@ var ConfluenceTest = []ConfluenceTestType{
 
 func UpdateTests() error {
 	//	confClient, err := NewAPI("http://localhost:1990/confluence", "admin", "admin")
-	confClient, err := NewAPI("http://192.168.50.40:8090", "admin", "admin")
+
+	confClient, err := NewAPI(CONFLUENCE_SERVER, "admin", "admin")
 	confClient.Debug = true
 	if err != nil {
 		return err

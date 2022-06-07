@@ -47,7 +47,7 @@ pipeline {
                 sh 'nancy -V'
                 sh 'git --version'
                 sh '/usr/local/bin/nancy -V'
-                sh 'go list -json -m all | nancy sleuth'
+                sh 'go list -json -m all | nancy sleuth -n'
             }
         }
         stage('Artifacts') {

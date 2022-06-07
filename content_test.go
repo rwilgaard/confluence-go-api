@@ -151,7 +151,7 @@ func TestAddContentQueryParams(t *testing.T) {
 func Test_GetVersion(t *testing.T) {
 	prepareTest(t, []int{TestGetVersion})
 
-	res, err2 := testClient.GetContentVersion("98319")
+	res, err2 := testClient.GetContentVersion(WELCOME_TO_CONFLUENCE)
 	if err2 == nil {
 		if res == nil {
 			t.Error("Expected version - is nil")
@@ -173,8 +173,8 @@ func Test_GetPageID(t *testing.T) {
 		if res == nil {
 			t.Error("Expected ID - is nil")
 		} else {
-			if res.Results[0].ID != "98319" {
-				t.Errorf("Expected ID 98319, received: %v \n", res.Results[0].ID)
+			if res.Results[0].ID != WELCOME_TO_CONFLUENCE {
+				t.Errorf("Expected ID %s, received: %v \n", WELCOME_TO_CONFLUENCE, res.Results[0].ID)
 			}
 		}
 	} else {
@@ -196,7 +196,7 @@ func Test_UppdateAttachment(t *testing.T) {
 func Test_AddPage(t *testing.T) {
 	prepareTest(t, TestAddPage)
 
-	err2 := testClient.AddPage("ds", "Some random name", "./mocks/grouppage.html", true, true, "98319")
+	err2 := testClient.AddPage("ds", "Some random name", "./mocks/grouppage.html", true, true, WELCOME_TO_CONFLUENCE)
 	if err2 == nil {
 	} else {
 		t.Error("Received nil response.")
@@ -213,8 +213,8 @@ Add "t_" for now
 
 func TesLocalhost(t *testing.T) {
 	//a, err := NewAPI("http://localhost:1990/confluence", "admin", "admin")
-	//a, err := NewAPI("http://192.168.50.40:1990/confluence", "admin", "admin")
-	a, err := NewAPI("http://192.168.50.40:8090", "admin", "admin")
+	//a, err := NewAPI("http://19..168.50.131:1990/confluence", "admin", "admin")
+	a, err := NewAPI(CONFLUENCE_SERVER, "admin", "admin")
 	assert.Nil(t, err)
 
 	url, err := a.getContentIDEndpoint("test")
@@ -223,7 +223,7 @@ func TesLocalhost(t *testing.T) {
 
 	res, err2 := a.GetPageId("ds", "Welcome to Confluence")
 	assert.Nil(t, err2)
-	assert.Equal(t, "98319", res.Results[0].ID)
+	assert.Equal(t, WELCOME_TO_CONFLUENCE, res.Results[0].ID)
 
 	err = a.UppdateAttachment("ds", "Welcome to Confluence", "./mocks/Template.xlsx")
 	assert.Nil(t, err)
