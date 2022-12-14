@@ -1,4 +1,4 @@
-module github.com/perolo/confluence-go-api
+module github.com/rwilgaard/confluence-go-api
 
 go 1.13
 
