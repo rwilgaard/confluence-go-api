@@ -6,7 +6,7 @@ pipeline {
         GO114MODULE = 'on'
         CGO_ENABLED = 0 
         GOPATH = "/go"
-        HOME = "/home/rwilgaard/Jenkins/workspace/${JOB_NAME}"
+        HOME = "/home/perolo/Jenkins/workspace/${JOB_NAME}"
     }
     options { 
         buildDiscarder(logRotator(numToKeepStr: '10')) 

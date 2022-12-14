@@ -6,8 +6,8 @@ github.com/google/go-querystring v1.1.0 h1:AnCroh3fv4ZBgVIf1Iwtovgjaw/GiKJo8M8yD
 github.com/google/go-querystring v1.1.0/go.mod h1:Kcdr2DB4koayq7X8pmAG4sNG59So17icRSOU623lUBU=
 github.com/magefile/mage v1.13.0 h1:XtLJl8bcCM7EFoO8FyH8XK3t7G5hQAeK+i4tq+veT9M=
 github.com/magefile/mage v1.13.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
-github.com/perolo/gojson v1.1.0 h1:gATZuqt9sfh4qHbh6tVi0zIesRzR1qLqJJEaSA37ARQ=
-github.com/perolo/gojson v1.1.0/go.mod h1:rR9R2kMXD7X5nYLK/T3fvBH1z6CLBV0ELiWyq+s1yLo=
+github.com/rwilgaard/gojson v1.1.0 h1:gATZuqt9sfh4qHbh6tVi0zIesRzR1qLqJJEaSA37ARQ=
+github.com/rwilgaard/gojson v1.1.0/go.mod h1:rR9R2kMXD7X5nYLK/T3fvBH1z6CLBV0ELiWyq+s1yLo=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

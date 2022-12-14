@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/perolo/gojson"
+	"github.com/rwilgaard/gojson"
 	"github.com/stretchr/testify/assert"
 )
 
